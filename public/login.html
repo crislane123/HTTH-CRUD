@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>HTTP-CRUD</title>
+</head>
+<body>
+
+    <center><h1>Formulário</h1></center>
+
+<div class="box">
+    <form>
+        <div class="inputBox">
+            <label>Nome Completo:</label>
+            <input type="nome" id="nome" class="inputUser" required>
+           </div><br><br>
+
+           <div class="inputBox">
+            <label>Data de nascimento:</label>
+            <input type="date" id="nascimento" class="inputUser" required>
+           </div><br><br>
+
+           <div class="inputBox">
+            <input type="radio" value="M" id="sexo1"> <label>Masculino:</label>
+           </div><br><br>
+
+           <div class="inputBox">
+            <input type="radio" value="M" id="sexo2"> <label> Feminino:</label>
+           </div><br><br>
+
+           <div class="inputBox">
+            <label>Número do plano de saúde:</label>
+            <input type="senha" id="plano" class="inputUser" required>
+           </div><br><br>
+
+           <div class="inputBox">
+            <label>Telefone:</label>
+            <input type="tel" id="telefone" class="inputUser" required>
+           </div><br><br>
+
+           <div class="inputBox">
+            <label>Motivo da consulta:</label>
+            <input type="senha" id="consulta" class="inputUser" required>
+           </div><br><br>
+
+           <div class="inputBox">
+            <label>data:</label>
+            <input type="date" id="dia" class="inputUser" required>
+           </div><br><br>
+
+           <div class="inputBox">
+            <label>Horario:</label>
+            <input type="time" id="hora" class="inputUser" required>
+           </div><br><br>
+
+           <div class="inputBox">
+            <label>Informações adicionais:</label><br>
+            <textarea type="mensagem" id="mensagem" cols="40" rows="4" class="inputUser"></textarea> 
+           </div><br><br>
+
+           <div class="inputBox">
+            <label>E-mail:</label>
+            <input type="email" id="email" class="inputUser" required>
+           </div><br><br>
+
+           <div class="inputBox">
+            <label>Senha:</label>
+            <input type="senha" id="senha" class="inputUser" required>
+           </div><br><br>
+
+            <input type="checkbox" name="email" id="email"><label> Aceita receber e-mail:</label><br><br>
+
+        <input type="button" onclick="enviarDados()" value="Enviar" class="entrar">
+    </form><br><br>
+</div>
+</div>
+</div>
+<br><br><br><br>
+
+
+
+   
+
+
+    <script>
+        //POST - CREATE
+        function enviarDados(){
+            const nome = document.getElementById('nome').value;
+            const nascimento = document.getElementById('nascimento').value;
+            const sexo1 = document.getElementById('sexo1').value;
+            const sexo2 = document.getElementById('sexo2').value;
+            const plano = document.getElementById('plano').value;
+            const telefone = document.getElementById('telefone').value;
+            const consulta = document.getElementById('consulta').value;
+            const dia = document.getElementById('dia').value;
+            const hora = document.getElementById('hora').value;
+            const mensagem = document.getElementById('mensagem').value;
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+
+            fetch('cadastro',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({nome: nome, nascimento: nascimento, sexo1: sexo1, sexo2: sexo2, plano: plano, telefone: telefone, consulta: consulta, dia: dia, hora: hora, mensagem: mensagem, email: email, senha: senha})
+            })
+            .then(response => response.json())
+
+            alert("Consulta realizada com sucesso");
+            window.location.reload();
+        }
+            
+    </script>
+
+
+    
+</body>
+</html>

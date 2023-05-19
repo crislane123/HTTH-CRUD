@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Bem-Vindo</title>
+</head>
+<body>
+  
+    <center><h1>Dados da sua consulta!</h1><br><br></center>
+    
+<div class="box">
+
+    <label>Numero do atendimento: </label><br><br>
+    <input id="id">
+    <br><br>
+
+    <input type="button" onclick="buscarDados()" value="Buscar" class="entrar2"><br><br>
+
+    <span id="nomeExibir"></span>
+    <br><br>
+    <span id="nascimentoExibir"></span>
+    <br><br>
+    <span id="planoExibir"></span>
+    <br><br>
+    <span id="telefoneExibir"></span>
+    <br><br>
+    <span id="consultaExibir"></span>
+    <br><br>
+    <span id="diaExibir"></span>
+    <br><br>
+    <span id="horaExibir"></span>
+    <br><br><br>
+    <h4>Atualize as suas <a href="atualizae.html">Informações!</a></h4>
+
+</div>
+</div>
+</div>
+
+
+
+
+    <script>
+         //GET - READ
+         function buscarDados(){
+            const id = document.getElementById('id').value;
+            fetch(`cadastro/${id}`, {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                document.getElementById('nomeExibir').innerHTML = (`Nome: ` + data.nome);
+                document.getElementById('nascimentoExibir').innerHTML = (`Data de nascimento: ` + data.nascimento);
+                document.getElementById('planoExibir').innerHTML = (`Plano de saúde: ` + data.plano);
+                document.getElementById('telefoneExibir').innerHTML = (`Telefone: ` + data.telefone);
+                document.getElementById('consultaExibir').innerHTML = (`Motivo da consulta: ` +data.consulta);
+                document.getElementById('diaExibir').innerHTML = (`Dia da consulta: ` + data.dia);
+                document.getElementById('horaExibir').innerHTML = (`Horário da consulta: ` + data.hora);
+            })
+        }
+
+         
+
+        
+    </script>
+</body>
+</html>

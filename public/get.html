@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usúarios</title>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Nascimento</th>
+            <th>Plano</th>
+            <th>Telefone</th>
+            <th>Consulta</th>
+            <th>Dia</th>
+            <th>Hora</th>
+            <th>Mensagem</th>
+            <th>Email</th>
+            
+        </tr>
+        <tbody id="tabela-corpo"></tbody>
+    </table>
+    
+
+    <script>
+        fetch('cadastro')
+        .then(response => response.json())
+        .then(data => {
+            const tabela = document.getElementById('tabela-corpo');
+            data.forEach((objeto) => {
+                const linha = `<tr>
+                    <td>${objeto.id}</td>
+                    <td>${objeto.nome}</td>
+                    <td>${objeto.nascimento}</td>
+                    <td>${objeto.plano}</td>
+                    <td>${objeto.telefone}</td>
+                    <td>${objeto.consulta}</td>
+                    <td>${objeto.dia}</td>
+                    <td>${objeto.hora}</td>
+                    <td>${objeto.mensagem}</td>
+                    <td>${objeto.email}</td>
+                </tr>`;
+                tabela.innerHTML += linha;
+            })
+        })
+    </script>
+    
+</body>
+</html>
