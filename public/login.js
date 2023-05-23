@@ -2,7 +2,7 @@ function fazerLogin() {
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
 
-    fetch('http://localhost:3000/cadastro/')
+    fetch('cadastro')
     .then(response => response.json())
     .then(data => {
         //Busca cujo o nome e idade coicidem com os valores digitados
